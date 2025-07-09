@@ -7,12 +7,11 @@ import { NgbDropdownConfig } from '@ng-bootstrap/ng-bootstrap';
 
 // project import
 import { SharedModule } from 'src/app/theme/shared/shared.module';
-import { ChatUserListComponent } from './chat-user-list/chat-user-list.component';
-import { ChatMsgComponent } from './chat-msg/chat-msg.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-right',
-  imports: [SharedModule, ChatUserListComponent, ChatMsgComponent],
+  imports: [SharedModule],
   templateUrl: './nav-right.component.html',
   styleUrls: ['./nav-right.component.scss'],
   providers: [NgbDropdownConfig],
@@ -34,7 +33,7 @@ export class NavRightComponent {
   friendId!: number;
 
   // constructor
-  constructor() {
+  constructor(private router: Router) {
     this.visibleUserList = false;
     this.chatMessage = false;
   }
@@ -44,5 +43,9 @@ export class NavRightComponent {
   onChatToggle(friendID: any) {
     this.friendId = friendID;
     this.chatMessage = !this.chatMessage;
+  }
+  doLogout() {
+    localStorage.clear();
+    this.router.navigate(['auth/login'])
   }
 }

@@ -21,9 +21,11 @@
 }
 
 .table {
+
   td,
   th {
     font-family: $theme-font-family;
+    font-size: 12px;
   }
 }
 
@@ -33,7 +35,7 @@
   }
 }
 
-.h-list-body .chat-messages .chat-menu-reply > div p,
+.h-list-body .chat-messages .chat-menu-reply>div p,
 .pcoded-header.header-blue a.h-back-user-list {
   color: $theme-font-color;
 }
@@ -42,13 +44,14 @@
   height: auto;
 }
 
-.pcoded-navbar.menu-light {
-  .pcoded-inner-navbar > app-nav-group > app-nav-collapse > li.active > a,
-  .pcoded-inner-navbar > app-nav-group > app-nav-collapse > li.pcoded-trigger > a,
-  .pcoded-inner-navbar > app-nav-group > app-nav-collapse > li:hover > a,
-  .pcoded-inner-navbar > app-nav-group > app-nav-item > li.active > a,
-  .pcoded-inner-navbar > app-nav-group > app-nav-item > li.pcoded-trigger > a,
-  .pcoded-inner-navbar > app-nav-group > app-nav-item > li:hover > a {
+.pcoded-navbar.menu-light:not(.theme-horizontal) {
+
+  .pcoded-inner-navbar>app-nav-group>app-nav-collapse>li.active>a,
+  .pcoded-inner-navbar>app-nav-group>app-nav-collapse>li.pcoded-trigger>a,
+  .pcoded-inner-navbar>app-nav-group>app-nav-collapse>li:hover>a,
+  .pcoded-inner-navbar>app-nav-group>app-nav-item>li.active>a,
+  .pcoded-inner-navbar>app-nav-group>app-nav-item>li.pcoded-trigger>a,
+  .pcoded-inner-navbar>app-nav-group>app-nav-item>li:hover>a {
     background: rgba(202, 202, 202, 0.3);
 
     &:before {

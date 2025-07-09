@@ -7,8 +7,8 @@ import { NavSearchComponent } from './nav-search/nav-search.component';
 
 @Component({
   selector: 'app-nav-left',
-  imports: [SharedModule, NavSearchComponent],
+  imports: [SharedModule],
   templateUrl: './nav-left.component.html',
   styleUrls: ['./nav-left.component.scss']
 })
-export class NavLeftComponent {}
+export class NavLeftComponent { }

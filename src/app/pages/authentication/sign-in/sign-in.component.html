@@ -1,0 +1,55 @@
+<div class="auth-wrapper">
+  <div class="auth-content">
+    <div class="card">
+      <div class="row align-items-center text-center">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <div class="col-md-12">
+            <div class="card-body">
+              <img src="assets/images/logo.png" alt="logo" class="img-fluid mb-4" style="height: 200;" />
+              <h4 class="mb-5 f-w-400">Login</h4>
+              <div class="input-group mb-1 position-relative" [ngClass]="{ 'is-invalid': submitted && f['emailOrPhoneNumber'].invalid }">
+                <span class="input-group-text" id="basic-addon1">
+                  <i class="feather icon-mail"></i>
+                </span>
+                <input type="email" class="form-control" formControlName="emailOrPhoneNumber" placeholder="Email address" aria-label="Email" aria-describedby="basic-addon1" />
+              </div>
+              <div *ngIf="submitted && f['emailOrPhoneNumber'].invalid">
+                <small *ngIf="f['emailOrPhoneNumber'].errors?.['required']" class="text-danger">
+                  email is required
+                </small>
+                <small *ngIf="f['emailOrPhoneNumber'].errors?.['email']" class="text-danger">
+                  email is not correct
+                </small>
+              </div>
+
+              <div class="input-group mb-1 position-relative mt-3" [ngClass]="{ 'is-invalid': submitted && f['password'].invalid }">
+                <span class="input-group-text"><i class="feather icon-lock"></i></span>
+                <input [type]="isPasswordVisible ? 'text' : 'password'" class="form-control" formControlName="password" placeholder="Password" />
+                <span class="input-group-text eye-toggle" (click)="togglePasswordVisibility()">
+                  <i [class]="isPasswordVisible ? 'fa fa-eye-slash' : 'fa fa-eye'"></i>
+                </span>
+              </div>
+              <div *ngIf="submitted && f['password'].invalid">
+                <small *ngIf="f['password'].errors?.['required']" class="text-danger">
+                  password is required
+                </small>
+              </div>
+
+              <div class="d-grid mt-5">
+                <button class="btn btn-block btn-primary mb-4" type="submit">Login</button>
+              </div>
+              <!-- <p class="mb-2 text-muted">
+              Forgot password?
+              <a href="javascriprt:" class="f-w-400">Reset</a>
+            </p> -->
+              <!-- <p class="mb-0 text-muted">
+              Don’t have an account?
+              <a [routerLink]="['/auth/signup']" class="f-w-400">Signup</a>
+            </p> -->
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

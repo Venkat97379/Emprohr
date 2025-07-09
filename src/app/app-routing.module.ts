@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 // project import
 import { AdminComponent } from './theme/layout/admin/admin.component';
 import { GuestComponent } from './theme/layout/guest/guest.component';
+import { AuthGuard } from './guard/auth.guard';
 
 const routes: Routes = [
   {
@@ -15,31 +16,16 @@ const routes: Routes = [
         path: '',
         redirectTo: '/analytics',
         pathMatch: 'full'
+
       },
       {
         path: 'analytics',
-        loadComponent: () => import('./demo/dashboard/dash-analytics.component').then((c) => c.DashAnalyticsComponent)
+        loadComponent: () => import('./demo/dashboard/dash-analytics.component'),
+        canActivate: [AuthGuard] // ✅ guard applied here
       },
-      {
-        path: 'component',
-        loadChildren: () => import('./demo/ui-element/ui-basic.module').then((m) => m.UiBasicModule)
-      },
-      {
-        path: 'chart',
-        loadComponent: () => import('./demo/chart-maps/core-apex.component').then((c) => c.CoreApexComponent)
-      },
-      {
-        path: 'forms',
-        loadComponent: () => import('./demo/forms/form-elements/form-elements.component').then((c) => c.FormElementsComponent)
-      },
-      {
-        path: 'tables',
-        loadComponent: () => import('./demo/tables/tbl-bootstrap/tbl-bootstrap.component').then((c) => c.TblBootstrapComponent)
-      },
-      {
-        path: 'sample-page',
-        loadComponent: () => import('./demo/other/sample-page/sample-page.component').then((c) => c.SamplePageComponent)
-      }
+
+
+
     ]
   },
   {
@@ -47,12 +33,8 @@ const routes: Routes = [
     component: GuestComponent,
     children: [
       {
-        path: 'register',
-        loadComponent: () => import('./demo/pages/authentication/sign-up/sign-up.component').then((c) => c.SignUpComponent)
-      },
-      {
-        path: 'login',
-        loadComponent: () => import('./demo/pages/authentication/sign-in/sign-in.component').then((c) => c.SignInComponent)
+        path: 'auth/login',
+        loadComponent: () => import('./pages/authentication/sign-in/sign-in.component')
       }
     ]
   }
@@ -62,4 +44,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

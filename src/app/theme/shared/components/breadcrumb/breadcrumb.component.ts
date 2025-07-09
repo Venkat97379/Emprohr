@@ -16,6 +16,7 @@ interface titleType {
 
 @Component({
   selector: 'app-breadcrumb',
+  standalone: true,
   imports: [RouterModule],
   templateUrl: './breadcrumb.component.html',
   styleUrls: ['./breadcrumb.component.scss']
@@ -45,7 +46,7 @@ export class BreadcrumbComponent {
         const breadcrumbList = this.filterNavigation(this.navigations, activeLink);
         this.navigationList = breadcrumbList;
         const title = breadcrumbList[breadcrumbList.length - 1]?.title || 'Welcome';
-        this.titleService.setTitle(title + ' | EMPROHR');
+        this.titleService.setTitle(title + ' | Gradient Able Angular free Admin Template');
       }
     });
   }
@@ -63,6 +64,7 @@ export class BreadcrumbComponent {
         ];
       }
       if ((navItem.type === 'group' || navItem.type === 'collapse') && 'children' in navItem) {
+         
         const breadcrumbList = this.filterNavigation(navItem.children!, activeLink);
         if (breadcrumbList.length > 0) {
           breadcrumbList.unshift({

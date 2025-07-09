@@ -1,5 +1,3 @@
-
-// Theme Font
 @import 'scss/themes/font/theme-font';
 
 // main framework
@@ -14,6 +12,7 @@
 @import 'node_modules/bootstrap/scss/utilities';
 @import 'node_modules/bootstrap/scss/utilities/api';
 @import '../node_modules/bootstrap/dist/css/bootstrap.css';
+@import '../node_modules/ngx-toastr//toastr.css';
 @import 'scss/themes/general';
 @import 'scss/themes/generic';
 @import 'scss/themes/minixs/function';
@@ -40,3 +39,30 @@
 
 // custom
 @import 'scss/themes/custom';
+
+
+
+.is-invalid {
+  border: 1px solid #dc3545 !important;
+  box-shadow: none;
+  border-radius: 0.25rem !important;
+}
+
+.input-group .form-control.is-invalid {
+  border-left: none !important;
+  /* Avoid double border if icon on left */
+}
+
+.eye-toggle {
+  cursor: pointer;
+}
+
+.input-group-text {
+  background-color: #fff;
+  /* Optional: matches form background */
+}
+
+input::-webkit-validation-bubble,
+input:invalid {
+  box-shadow: none;
+}
